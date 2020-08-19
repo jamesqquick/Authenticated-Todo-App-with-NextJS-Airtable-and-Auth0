@@ -1,5 +1,5 @@
 {
-    "name": "authenticated-todo-app-with-nextjs-and-auth0",
+    "name": "authenticated-todo-app-with-nextjs-airtable-and-auth0",
     "version": "0.1.0",
     "private": true,
     "scripts": {

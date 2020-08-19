@@ -13,14 +13,14 @@ export default function Home({ initialTodos, user }) {
     }, []);
 
     return (
-        <div>
+        <div className="max-w-xl m-auto p-2">
             <Head>
                 <title>My Todo CRUD App</title>
             </Head>
 
             <main>
                 <nav>
-                    <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
+                    <div class="flex items-center justify-between py-4  ">
                         <div class="flex justify-between items-center">
                             <div class="text-2xl font-bold text-gray-800 md:text-3xl">
                                 <a href="#">My Todos</a>

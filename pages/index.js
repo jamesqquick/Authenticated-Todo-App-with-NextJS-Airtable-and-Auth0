@@ -45,13 +45,7 @@ export default function Home({ initialTodos, user }) {
                         </div>
                     </div>
                 </nav>
-                {!user && (
-                    <p className="text-center mt-4">
-                        Please login to save todos!
-                    </p>
-                )}
-
-                {user && (
+                {user ? (
                     <>
                         <TodoForm />
                         <ul>
@@ -61,6 +55,10 @@ export default function Home({ initialTodos, user }) {
                                 ))}
                         </ul>
                     </>
+                ) : (
+                    <p className="text-center mt-4">
+                        Please login to save todos!
+                    </p>
                 )}
             </main>
         </div>

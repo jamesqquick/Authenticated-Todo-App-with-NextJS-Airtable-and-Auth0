@@ -54,7 +54,7 @@ export default function Todo({ todo }) {
             </span>
             <button
                 type="button"
-                class="text-sm bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                className="text-sm bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleDeleteTodo}
             >
                 Delete

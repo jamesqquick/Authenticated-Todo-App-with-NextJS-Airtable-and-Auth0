@@ -1,65 +1,84 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import { table, minifyRecords } from './api/utils/airtable';
+import Todo from '../compenents/Todo';
+import { useEffect, useContext } from 'react';
+import { TodosContext } from '../contexts/TodosContext';
+import TodoForm from '../compenents/TodoForm';
+import auth0 from '../utils/auth0';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+export default function Home({ initialTodos, user }) {
+    const { todos, setTodos, refreshTodos } = useContext(TodosContext);
+    useEffect(() => {
+        setTodos(initialTodos);
+    }, []);
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+    return (
+        <div>
+            <Head>
+                <title>My Todo CRUD App</title>
+            </Head>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+            <main>
+                <nav>
+                    <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
+                        <div class="flex justify-between items-center">
+                            <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+                                <a href="#">My Todos</a>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            {user ? (
+                                <a
+                                    href="/api/logout"
+                                    class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
+                                >
+                                    Logout
+                                </a>
+                            ) : (
+                                <a
+                                    href="/api/login"
+                                    class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
+                                >
+                                    Login
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </nav>
+                {!user && (
+                    <p className="text-center mt-4">
+                        Please login to save todos!
+                    </p>
+                )}
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+                {user && (
+                    <>
+                        <TodoForm />
+                        <ul>
+                            {todos &&
+                                todos.map((todo) => (
+                                    <Todo todo={todo} key={todo.id} />
+                                ))}
+                        </ul>
+                    </>
+                )}
+            </main>
         </div>
-      </main>
+    );
+}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+export async function getServerSideProps(context) {
+    const session = await auth0.getSession(context.req);
+    let todos = [];
+    if (session?.user) {
+        todos = await table
+            .select({ filterByFormula: `userId = '${session.user.sub}'` })
+            .firstPage();
+    }
+    return {
+        props: {
+            initialTodos: minifyRecords(todos),
+            user: session?.user || null,
+        },
+    };
 }

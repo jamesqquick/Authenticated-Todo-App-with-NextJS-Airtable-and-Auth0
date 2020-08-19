@@ -1,22 +1,22 @@
 {
-  "name": "next-test",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@auth0/nextjs-auth0": "^0.15.0",
-    "airtable": "^0.9.0",
-    "next": "9.5.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "swr": "^0.3.0"
-  },
-  "devDependencies": {
-    "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.6.3"
-  }
+    "name": "authenticated-todo-app-with-nextjs-and-auth0",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@auth0/nextjs-auth0": "^0.15.0",
+        "airtable": "^0.9.0",
+        "next": "9.5.2",
+        "react": "16.13.1",
+        "react-dom": "16.13.1",
+        "swr": "^0.3.0"
+    },
+    "devDependencies": {
+        "postcss-preset-env": "^6.7.0",
+        "tailwindcss": "^1.6.3"
+    }
 }

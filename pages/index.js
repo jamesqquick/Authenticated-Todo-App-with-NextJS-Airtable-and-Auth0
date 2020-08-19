@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { table, minifyRecords } from './api/utils/airtable';
+import { table, minifyRecords } from '../utils/airtable';
 import Todo from '../compenents/Todo';
 import { useEffect, useContext } from 'react';
 import { TodosContext } from '../contexts/TodosContext';
@@ -7,7 +7,7 @@ import TodoForm from '../compenents/TodoForm';
 import auth0 from '../utils/auth0';
 
 export default function Home({ initialTodos, user }) {
-    const { todos, setTodos, refreshTodos } = useContext(TodosContext);
+    const { todos, setTodos } = useContext(TodosContext);
     useEffect(() => {
         setTodos(initialTodos);
     }, []);
@@ -20,24 +20,24 @@ export default function Home({ initialTodos, user }) {
 
             <main>
                 <nav>
-                    <div class="flex items-center justify-between py-4  ">
-                        <div class="flex justify-between items-center">
-                            <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+                    <div className="flex items-center justify-between py-4  ">
+                        <div className="flex justify-between items-center">
+                            <div className="text-2xl font-bold text-gray-800 md:text-3xl">
                                 <a href="#">My Todos</a>
                             </div>
                         </div>
-                        <div class="flex">
+                        <div className="flex">
                             {user ? (
                                 <a
                                     href="/api/logout"
-                                    class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
+                                    className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
                                 >
                                     Logout
                                 </a>
                             ) : (
                                 <a
                                     href="/api/login"
-                                    class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
+                                    className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
                                 >
                                     Login
                                 </a>

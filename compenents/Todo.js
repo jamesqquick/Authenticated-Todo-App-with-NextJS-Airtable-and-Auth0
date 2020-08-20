@@ -9,32 +9,10 @@ export default function Todo({ todo }) {
             completed: !todo.fields.completed,
         };
         const updatedTodo = { id: todo.id, fields: updatedFields };
-        try {
-            await fetch('/api/updateTodo', {
-                method: 'PUT',
-                body: JSON.stringify(updatedTodo),
-                headers: {
-                    'content-type': 'application/json',
-                },
-            });
-            updateTodo(updatedTodo);
-        } catch (err) {
-            console.error(err);
-        }
+        updateTodo(updatedTodo);
     };
 
-    const handleDeleteTodo = async () => {
-        try {
-            await fetch('/api/deleteTodo', {
-                method: 'Delete',
-                body: JSON.stringify({ id: todo.id }),
-                headers: { 'Content-Type': 'application/json' },
-            });
-            deleteTodo(todo.id);
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    const handleDeleteTodo = async () => {};
 
     return (
         <li className="bg-white flex items-center shadow-lg rounded-lg my-2 py-2 px-4">
@@ -55,7 +33,7 @@ export default function Todo({ todo }) {
             <button
                 type="button"
                 className="text-sm bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                onClick={handleDeleteTodo}
+                onClick={() => deleteTodo(todo.id)}
             >
                 Delete
             </button>

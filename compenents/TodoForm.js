@@ -10,8 +10,8 @@ export default function TodoForm() {
         setTodo('');
     };
     return (
-        <form class="form my-6" onSubmit={handleSubmit}>
-            <div class="flex flex-col text-sm">
+        <form className="form my-6" onSubmit={handleSubmit}>
+            <div className="flex flex-col text-sm">
                 <label htmlFor="todo" className="font-bold mb-2 text-gray-800 ">
                     Todo
                 </label>
@@ -20,14 +20,14 @@ export default function TodoForm() {
                     name="todo"
                     value={todo}
                     placeholder="ex. Learn about authentication in Next.js"
-                    class=" appearance-none border border-gray-200 p-2 focus:outline-none focus:border-gray-500 rounded-lg "
+                    className=" appearance-none border border-gray-200 p-2 focus:outline-none focus:border-gray-500 rounded-lg "
                     onChange={(e) => setTodo(e.target.value)}
                 />
             </div>
-            <div class="submit">
+            <div className="submit">
                 <button
                     type="submit"
-                    class=" w-full bg-blue-600 shadow-lg text-white px-4 py-2 hover:bg-blue-700 my-3 text-center font-semibold focus:outline-none rounded-lg"
+                    className=" w-full bg-blue-600 shadow-lg text-white px-4 py-2 hover:bg-blue-700 my-3 text-center font-semibold focus:outline-none rounded-lg"
                 >
                     Submit
                 </button>

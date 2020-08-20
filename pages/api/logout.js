@@ -1,4 +1,4 @@
-import auth0 from '../../utils/auth0';
+import auth0 from './utils/auth0';
 
 export default async function logout(req, res) {
     try {

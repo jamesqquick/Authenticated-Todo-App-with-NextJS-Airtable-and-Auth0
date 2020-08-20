@@ -32,21 +32,44 @@ const TodosProvider = ({ children }) => {
         }
     };
 
-    const updateTodo = (updatedTodo) => {
-        setTodos((prevTodos) => {
-            const existingTodos = [...prevTodos];
-            const existingTodo = existingTodos.find(
-                (todo) => todo.id === updatedTodo.id
-            );
-            existingTodo.fields = updatedTodo.fields;
-            return existingTodos;
-        });
+    const updateTodo = async (updatedTodo) => {
+        try {
+            await fetch('/api/updateTodo', {
+                method: 'PUT',
+                body: JSON.stringify(updatedTodo),
+                headers: {
+                    'content-type': 'application/json',
+                },
+            });
+
+            setTodos((prevTodos) => {
+                const existingTodos = [...prevTodos];
+                const existingTodo = existingTodos.find(
+                    (todo) => todo.id === updatedTodo.id
+                );
+                existingTodo.fields = updatedTodo.fields;
+                return existingTodos;
+            });
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    const deleteTodo = (id) => {
-        setTodos((prevTodos) => {
-            return prevTodos.filter((todo) => todo.id !== id);
-        });
+    const deleteTodo = async (id) => {
+        console.log('delete todo');
+        try {
+            await fetch('/api/deleteTodo', {
+                method: 'Delete',
+                body: JSON.stringify({ id }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            setTodos((prevTodos) => {
+                return prevTodos.filter((todo) => todo.id !== id);
+            });
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (

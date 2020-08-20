@@ -1,5 +1,5 @@
-const { table } = require('./utils/airtable.js');
-import auth0 from '../../utils/auth0';
+import { table } from './utils/airtable.js';
+import auth0 from './utils/auth0';
 
 export default auth0.requireAuthentication(async (req, res) => {
     const { user } = await auth0.getSession(req);

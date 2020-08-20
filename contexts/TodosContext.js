@@ -67,7 +67,6 @@ const TodosProvider = ({ children }) => {
                 return prevTodos.filter((todo) => todo.id !== id);
             });
         } catch (err) {
-            console.log('errrorrr!!');
             console.error(err);
         }
     };

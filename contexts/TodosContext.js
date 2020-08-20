@@ -56,7 +56,6 @@ const TodosProvider = ({ children }) => {
     };
 
     const deleteTodo = async (id) => {
-        console.log('delete todo');
         try {
             await fetch('/api/deleteTodo', {
                 method: 'Delete',
@@ -68,6 +67,7 @@ const TodosProvider = ({ children }) => {
                 return prevTodos.filter((todo) => todo.id !== id);
             });
         } catch (err) {
+            console.log('errrorrr!!');
             console.error(err);
         }
     };

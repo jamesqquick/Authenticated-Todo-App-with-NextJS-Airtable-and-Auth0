@@ -12,8 +12,6 @@ export default function Todo({ todo }) {
         updateTodo(updatedTodo);
     };
 
-    const handleDeleteTodo = async () => {};
-
     return (
         <li className="bg-white flex items-center shadow-lg rounded-lg my-2 py-2 px-4">
             <input

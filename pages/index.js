@@ -4,7 +4,6 @@ import Todo from '../compenents/Todo';
 import { useEffect, useContext } from 'react';
 import { TodosContext } from '../contexts/TodosContext';
 import TodoForm from '../compenents/TodoForm';
-import auth0 from './api/utils/auth0';
 
 export default function Home({ initialTodos, user }) {
     const { todos, setTodos } = useContext(TodosContext);
@@ -67,7 +66,6 @@ export default function Home({ initialTodos, user }) {
 
 export async function getServerSideProps(context) {
     //TODO: Get the logged in user
-    const session = await auth0.getSession(context.req);
     let todos = [];
     //TODO: only get records for logged in user
     // todos = await table

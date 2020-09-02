@@ -1,7 +1,7 @@
 import { table } from './utils/airtable.js';
 
 //TODO: require authentication
-const handler = async (req, res) => {
+export default handler = async (req, res) => {
     const { id } = req.body;
 
     try {
@@ -14,5 +14,3 @@ const handler = async (req, res) => {
         res.json({ msg: 'Something went wrong' });
     }
 };
-
-export default auth0.requireAuthentication(OwnsRecord(handler));

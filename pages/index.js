@@ -30,14 +30,14 @@ export default function Home({ initialTodos, user }) {
                             {user ? (
                                 <a
                                     href="/api/logout"
-                                    className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
+                                    className="rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4"
                                 >
                                     Logout
                                 </a>
                             ) : (
                                 <a
                                     href="/api/login"
-                                    className="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
+                                    className="rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4"
                                 >
                                     Login
                                 </a>

@@ -11,7 +11,7 @@ export default function TodoForm() {
     };
     return (
         <form className="form my-6" onSubmit={handleSubmit}>
-            <div className="flex flex-col text-sm">
+            <div className="flex flex-col text-sm mb-2">
                 <label htmlFor="todo" className="font-bold mb-2 text-gray-800 ">
                     Todo
                 </label>
@@ -24,14 +24,12 @@ export default function TodoForm() {
                     onChange={(e) => setTodo(e.target.value)}
                 />
             </div>
-            <div className="submit">
-                <button
-                    type="submit"
-                    className=" w-full bg-blue-600 shadow-lg text-white px-4 py-2 hover:bg-blue-700 my-3 text-center font-semibold focus:outline-none rounded-lg"
-                >
-                    Submit
-                </button>
-            </div>
+            <button
+                type="submit"
+                className=" w-full rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4"
+            >
+                Submit
+            </button>
         </form>
     );
 }

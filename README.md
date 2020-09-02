@@ -1,5 +1,7 @@
 This is an authenticated Todo app that uses Next.js, Airtable, Tailwind CSS, and Auth0.
 
+![Screenshot of Todo App](./public/screenshot.jpg)
+
 ## Getting Started
 
 You'll need to add a `.env.local` file to the root of the repository and include appropriate environment variables for Airtable, Auth0, and a cookie secret.

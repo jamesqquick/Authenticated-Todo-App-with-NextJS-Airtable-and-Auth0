@@ -66,11 +66,8 @@ export default function Home({ initialTodos, user }) {
 
 export async function getServerSideProps(context) {
     //TODO: Get the logged in user
-    let todos = [];
     //TODO: only get records for logged in user
-    // todos = await table
-    //     .select({ filterByFormula: `userId = '${session.user.sub}'` })
-    //     .firstPage();
+    const todos = await table.select().firstPage();
     return {
         props: {
             initialTodos: minifyRecords(todos),

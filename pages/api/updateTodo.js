@@ -4,7 +4,7 @@ import OwnsRecord from './middleware/OwnsRecord.js';
 //TODO: require authentication
 export default handler = async (req, res) => {
     //TODO: get logged in userc
-    const user;
+    const user = {};
 
     const { id, fields } = req.body;
 

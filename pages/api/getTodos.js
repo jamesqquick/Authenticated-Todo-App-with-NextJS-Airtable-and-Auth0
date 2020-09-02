@@ -3,6 +3,7 @@ import { table, getMinifiedRecord, minifyRecords } from './utils/airtable.js';
 //TODO: require authentication
 export default async (req, res) => {
     //TODO: get logged in user
+    const user = {};
     try {
         const records = await table
             .select({ filterByFormula: `userId = '${user.sub}'` })

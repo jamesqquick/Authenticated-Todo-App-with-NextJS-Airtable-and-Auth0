@@ -71,7 +71,7 @@ export async function getServerSideProps(context) {
     return {
         props: {
             initialTodos: minifyRecords(todos),
-            user: session?.user || null,
+            user: {},
         },
     };
 }

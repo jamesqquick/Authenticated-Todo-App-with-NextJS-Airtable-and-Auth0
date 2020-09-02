@@ -3,8 +3,8 @@ import { table } from './utils/airtable.js';
 //TODO: requireAuthentication
 export default async (req, res) => {
     //TODO: get the logged in user and associate userid with incoming record
-    const user;
-    
+    const user = {};
+
     const { description } = req.body;
     try {
         const createdRecords = await table.create([

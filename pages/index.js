@@ -66,13 +66,13 @@ export default function Home({ initialTodos, user }) {
 }
 
 export async function getServerSideProps(context) {
+    //TODO: Get the logged in user
     const session = await auth0.getSession(context.req);
     let todos = [];
-    if (session?.user) {
-        todos = await table
-            .select({ filterByFormula: `userId = '${session.user.sub}'` })
-            .firstPage();
-    }
+    //TODO: only get records for logged in user
+    // todos = await table
+    //     .select({ filterByFormula: `userId = '${session.user.sub}'` })
+    //     .firstPage();
     return {
         props: {
             initialTodos: minifyRecords(todos),

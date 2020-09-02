@@ -1,8 +1,8 @@
 import { table, getMinifiedRecord, minifyRecords } from './utils/airtable.js';
-import auth0 from './utils/auth0';
 
-export default auth0.requireAuthentication(async (req, res) => {
-    const { user } = await auth0.getSession(req);
+//TODO: require authentication
+export default async (req, res) => {
+    //TODO: get logged in user
     try {
         const records = await table
             .select({ filterByFormula: `userId = '${user.sub}'` })
@@ -15,4 +15,4 @@ export default auth0.requireAuthentication(async (req, res) => {
         res.statusCode = 500;
         res.json({ msg: 'Something went wrong' });
     }
-});
+};

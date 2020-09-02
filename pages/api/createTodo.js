@@ -1,9 +1,10 @@
 import { table } from './utils/airtable.js';
-import auth0 from './utils/auth0';
 
-export default auth0.requireAuthentication(async (req, res) => {
-    const { user } = await auth0.getSession(req);
-
+//TODO: requireAuthentication
+export default async (req, res) => {
+    //TODO: get the logged in user and associate userid with incoming record
+    const user;
+    
     const { description } = req.body;
     try {
         const createdRecords = await table.create([
@@ -20,4 +21,4 @@ export default auth0.requireAuthentication(async (req, res) => {
         res.statusCode = 500;
         res.json({ msg: 'Something went wrong' });
     }
-});
+};

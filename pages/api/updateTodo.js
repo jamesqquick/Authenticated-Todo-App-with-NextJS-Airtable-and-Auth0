@@ -2,8 +2,11 @@ import { table } from './utils/airtable.js';
 import auth0 from './utils/auth0';
 import OwnsRecord from './middleware/OwnsRecord.js';
 
-const handler = async (req, res) => {
-    const { user } = await auth0.getSession(req);
+//TODO: require authentication
+export default handler = async (req, res) => {
+    //TODO: get logged in userc
+    const user;
+    
     const { id, fields } = req.body;
 
     try {
@@ -17,5 +20,3 @@ const handler = async (req, res) => {
         res.json({ msg: 'Something went wrong' });
     }
 };
-
-export default auth0.requireAuthentication(OwnsRecord(handler));

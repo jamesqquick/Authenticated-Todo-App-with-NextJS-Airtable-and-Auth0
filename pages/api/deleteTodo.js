@@ -1,7 +1,6 @@
 import { table } from './utils/airtable.js';
-import auth0 from './utils/auth0';
-import OwnsRecord from './middleware/OwnsRecord.js';
 
+//TODO: require authentication
 const handler = async (req, res) => {
     const { id } = req.body;
 

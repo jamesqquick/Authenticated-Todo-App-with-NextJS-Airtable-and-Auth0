@@ -1,7 +1,7 @@
 import { table } from './utils/airtable.js';
 
 //TODO: require authentication
-export default handler = async (req, res) => {
+export default async (req, res) => {
     const { id } = req.body;
 
     try {

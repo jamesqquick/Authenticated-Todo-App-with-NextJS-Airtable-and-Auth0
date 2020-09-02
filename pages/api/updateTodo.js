@@ -1,5 +1,4 @@
 import { table } from './utils/airtable.js';
-import OwnsRecord from './middleware/OwnsRecord.js';
 
 //TODO: require authentication
 export default handler = async (req, res) => {
